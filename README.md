@@ -7,7 +7,8 @@
 ### Have fun
 Lep dan
 
+## Avtorji
 
-## Lastniki
-- Dave Franco
-- Nihče drug
+Avtorji so:
+- James Franco
+- To je to
