@@ -12,3 +12,6 @@ Lep dan
 Avtorji so:
 - James Franco
 - To je to
+
+## Robot je živ
+- dodali smo Terminatorja
