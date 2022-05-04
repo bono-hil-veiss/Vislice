@@ -1,9 +1,8 @@
 # Vislice
 
 ## Opis
-First time?
-
-Referenca na film
+- First time?
+(Referenca na film)
 
 ### Have fun
 Lep dan
