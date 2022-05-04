@@ -6,3 +6,9 @@
 
 ### Have fun
 Lep dan
+
+## Avtorji
+
+Avtorji so:
+- James Franco
+- To je to
