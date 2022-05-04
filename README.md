@@ -6,3 +6,8 @@
 
 ### Have fun
 Lep dan
+
+
+## Lastniki
+- Dave Franco
+- Nihče drug
