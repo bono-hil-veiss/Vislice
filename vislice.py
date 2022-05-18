@@ -10,6 +10,10 @@ vislice = model.Vislice()
 def staticne_slike(file):
     return bottle.static_file(file, root="img")
 
+@bottle.get("/oblika/<file>")
+def staticno_oblikovanje(file):
+    return bottle.static_file(file, root="oblika")
+
 
 @bottle.get("/")
 def osnovno():
