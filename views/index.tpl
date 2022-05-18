@@ -12,3 +12,7 @@
 <form action="/igra/" method="post">
   <button type="submit">Nova igra</button>
 </form>
+
+<form action="/pretekle_igre/" method="post">
+  <button type="submit">Pretekle igre</button>
+</form>

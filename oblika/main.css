@@ -7,3 +7,17 @@ img {
     height: 100px;
 }
 
+.gumb_crka {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    color: chocolate;
+}
+
+.vrsta1 {
+    padding-left: 18px;
+}
+
+.vrsta2 {
+    padding-left: 36px;
+}
