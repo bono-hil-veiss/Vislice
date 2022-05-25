@@ -11,7 +11,7 @@ Pod seznamom lahko dodate še gumb DOMOV, ki nas preusmeri na začetno stran.
 
 <ul>
 % for id_igre, (igre, stanje) in igre.items():
-  <li> <a href="http://127.0.0.1:8080/igra/{{id_igre}}">
+  <li> <a href="/igra/{{id_igre}}">
         Igra {{id_igre}} (stanje: {{stanje}})
     </a> 
   </li>

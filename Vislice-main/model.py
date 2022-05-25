@@ -1,6 +1,8 @@
 import random
 import uuid
 import json
+import os
+
 
 def pripravi_bazen():
     with open("besede.txt", encoding="utf-8") as f:
@@ -40,7 +42,7 @@ class Igra:
         return " ".join(c if c in self.crke else "_" for c in self.geslo)
 
     def nepravilni_ugibi(self):
-        return ", ".join(self.napacne_crke())
+        return ", ".join(sorted(self.napacne_crke()))
 
     def ugibaj(self, crka):
         crka = crka.upper()
@@ -66,12 +68,10 @@ def nova_igra():
 class Vislice:
     def __init__(self):
         self.igre = {}
-        self.datoteka_s_stanjem = 'stanje.json'
+        self.datoteka_s_stanjem = "stanje.json"
         self.nalozi_igre_iz_datoteke()
 
     def prost_id_igre(self):
-        # return len(self.igre)
-        self.nalozi_igre_iz_datoteke()
         while True:
             kandidat = uuid.uuid4().int
             if kandidat not in self.igre:
@@ -90,29 +90,20 @@ class Vislice:
         igra = self.igre[id_igre][0]
         novo_stanje = igra.ugibaj(crka)
         self.igre[id_igre] = (igra, novo_stanje)
+        self.zapisi_igre_v_datoteko()
 
     def nalozi_igre_iz_datoteke(self):
-        with open(self.datoteka_s_stanjem, 'r', encoding='utf-8') as f:
-            json_stanje = json.load(f)
-            self.igre = {}
-            for id_str, (geslo, crke, stanje_igre) in json_stanje.items():
-                id_igre = int(id_str)
+        if os.path.exists(self.datoteka_s_stanjem):
+            with open(self.datoteka_s_stanjem, encoding="utf-8") as f:
+                zgodovina = json.load(f)
+            for id_igre, (geslo, crke, stanje) in zgodovina.items():
                 igra = Igra(geslo)
                 igra.crke = set(crke)
-                self.igre[id_igre] = (igra, stanje_igre)
-
+                self.igre[int(id_igre)] = (igra, stanje)
 
     def zapisi_igre_v_datoteko(self):
-        slovar_za_shranjevanje = {}
+        za_odlozit = {}
         for id_igre, (igra, stanje) in self.igre.items():
-            slovar_za_shranjevanje[str(id_igre)] = (igra.geslo, list(igra.crke), stanje)
-        with open(self.datoteka_s_stanjem, 'w', encoding='utf-8') as f:
-            json.dump(slovar_za_shranjevanje, f)
-       
-        #iz json_stanje ustvari self.igre
-
-if __name__ == '__main__':
-    v = Vislice()
-    v.nova_igra()
-    v.zapisi_igre_v_datoteko()
-    print(len(v.igre))
+            za_odlozit[id_igre] = (igra.geslo, list(igra.crke), stanje)
+        with open(self.datoteka_s_stanjem, "w", encoding="utf-8") as f:
+            json.dump(za_odlozit, f)
